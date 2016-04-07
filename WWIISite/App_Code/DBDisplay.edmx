@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="VehicleModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="VehicleModelStoreContainer">
+          <EntitySet Name="Country" EntityType="VehicleModel.Store.Country" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Vehicle" EntityType="VehicleModel.Store.Vehicle" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Vehicle_Country" Association="VehicleModel.Store.FK_Vehicle_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Vehicle" EntitySet="Vehicle" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryCodeID" />
+          </Key>
+          <Property Name="CountryCodeID" Type="varchar" Nullable="false" MaxLength="3" />
+          <Property Name="CountryID" Type="int" Nullable="false" />
+          <Property Name="CountryName" Type="varchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Vehicle">
+          <Key>
+            <PropertyRef Name="VehicleID" />
+          </Key>
+          <Property Name="VehicleID" Type="int" Nullable="false" />
+          <Property Name="CountryCodeID" Type="varchar" Nullable="false" MaxLength="3" />
+          <Property Name="Designation" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Variation" Type="varchar" MaxLength="20" />
+          <Property Name="NickName" Type="varchar" MaxLength="50" />
+          <Property Name="VehicleType" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="CrewNum" Type="int" Nullable="false" />
+          <Property Name="Cannon1" Type="varchar" MaxLength="50" />
+          <Property Name="Cannon2" Type="varchar" MaxLength="50" />
+          <Property Name="MG1" Type="varchar" MaxLength="50" />
+          <Property Name="MG2" Type="varchar" MaxLength="50" />
+          <Property Name="MG3" Type="varchar" MaxLength="50" />
+          <Property Name="Bomb1" Type="varchar" MaxLength="50" />
+          <Property Name="Bomb2" Type="varchar" MaxLength="50" />
+          <Property Name="Missile" Type="varchar" MaxLength="50" />
+          <Property Name="Torpedo" Type="varchar" MaxLength="50" />
+          <Property Name="ServiceYearStart" Type="int" />
+          <Property Name="ServiceYearEnd" Type="int" />
+        </EntityType>
+        <Association Name="FK_Vehicle_Country">
+          <End Role="Country" Type="VehicleModel.Store.Country" Multiplicity="1" />
+          <End Role="Vehicle" Type="VehicleModel.Store.Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryCodeID" />
+            </Principal>
+            <Dependent Role="Vehicle">
+              <PropertyRef Name="CountryCodeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VehicleModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="VehicleEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Countries" EntityType="VehicleModel.Country" />
+          <EntitySet Name="Vehicles" EntityType="VehicleModel.Vehicle" />
+          <AssociationSet Name="FK_Vehicle_Country" Association="VehicleModel.FK_Vehicle_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Vehicle" EntitySet="Vehicles" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryCodeID" />
+          </Key>
+          <Property Name="CountryCodeID" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="false" />
+          <Property Name="CountryID" Type="Int32" Nullable="false" />
+          <Property Name="CountryName" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Vehicles" Relationship="VehicleModel.FK_Vehicle_Country" FromRole="Country" ToRole="Vehicle" />
+        </EntityType>
+        <EntityType Name="Vehicle">
+          <Key>
+            <PropertyRef Name="VehicleID" />
+          </Key>
+          <Property Name="VehicleID" Nullable="false" Type="Int32" />
+          <Property Name="CountryCodeID" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Designation" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Variation" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="NickName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="VehicleType" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="CrewNum" Nullable="false" Type="Int32" />
+          <Property Name="Cannon1" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Cannon2" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="MG1" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="MG2" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="MG3" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Bomb1" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Bomb2" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Missile" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Torpedo" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="ServiceYearStart" Type="Int32" />
+          <Property Name="ServiceYearEnd" Type="Int32" />
+          <NavigationProperty Name="Country" Relationship="VehicleModel.FK_Vehicle_Country" FromRole="Vehicle" ToRole="Country" />
+        </EntityType>
+        <Association Name="FK_Vehicle_Country">
+          <End Role="Country" Type="VehicleModel.Country" Multiplicity="1" />
+          <End Role="Vehicle" Type="VehicleModel.Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryCodeID" />
+            </Principal>
+            <Dependent Role="Vehicle">
+              <PropertyRef Name="CountryCodeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VehicleModelStoreContainer" CdmEntityContainer="VehicleEntities">
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="VehicleModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="CountryCodeID" ColumnName="CountryCodeID" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vehicles">
+            <EntityTypeMapping TypeName="VehicleModel.Vehicle">
+              <MappingFragment StoreEntitySet="Vehicle">
+                <ScalarProperty Name="VehicleID" ColumnName="VehicleID" />
+                <ScalarProperty Name="CountryCodeID" ColumnName="CountryCodeID" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="Variation" ColumnName="Variation" />
+                <ScalarProperty Name="NickName" ColumnName="NickName" />
+                <ScalarProperty Name="VehicleType" ColumnName="VehicleType" />
+                <ScalarProperty Name="CrewNum" ColumnName="CrewNum" />
+                <ScalarProperty Name="Cannon1" ColumnName="Cannon1" />
+                <ScalarProperty Name="Cannon2" ColumnName="Cannon2" />
+                <ScalarProperty Name="MG1" ColumnName="MG1" />
+                <ScalarProperty Name="MG2" ColumnName="MG2" />
+                <ScalarProperty Name="MG3" ColumnName="MG3" />
+                <ScalarProperty Name="Bomb1" ColumnName="Bomb1" />
+                <ScalarProperty Name="Bomb2" ColumnName="Bomb2" />
+                <ScalarProperty Name="Missile" ColumnName="Missile" />
+                <ScalarProperty Name="Torpedo" ColumnName="Torpedo" />
+                <ScalarProperty Name="ServiceYearStart" ColumnName="ServiceYearStart" />
+                <ScalarProperty Name="ServiceYearEnd" ColumnName="ServiceYearEnd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="DBDisplay">
+        <EntityTypeShape EntityType="VehicleModel.Country" Width="1.5" PointX="0.75" PointY="2.5" Height="1.7879850260416665" IsExpanded="true" />
+        <EntityTypeShape EntityType="VehicleModel.Vehicle" Width="1.5" PointX="3" PointY="1" Height="4.6725065104166665" IsExpanded="true" />
+        <AssociationConnector Association="VehicleModel.FK_Vehicle_Country" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="3.3939925130208333" />
+          <ConnectorPoint PointX="3" PointY="3.3939925130208333" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode url="~/" title="Home"  description="Home">
+    <siteMapNode url="~/Default.aspx" title="Home" description="Return Home" />
+    <siteMapNode url="~/Britain/BritainDefault.aspx" title="Britain"  description="Take to Britain Page">
+      <siteMapNode url="~/Britain/BritainAircraft.aspx" title="Britain Aircraft"  description="Learn about British Airplanes!" />
+      <siteMapNode url="~/Britain/BritainTanks.aspx" title="British Tanks" description="Learn about British Tanks!" />>
+    </siteMapNode>
+    <siteMapNode url="~/USA/USADefault.aspx" title="United States"  description="Take to USA page">
+      <siteMapNode url="~/USA/USAAircraft.aspx" title="USA Aircraft"  description="Learn about United States Airplanes!" />
+      <siteMapNode url="~/USA/USATanks.aspx" title="USA Tanks" description="Learn about United States Tanks!" />
+    </siteMapNode>
+    <siteMapNode url="~/USSR/USSRDefault.aspx" title="Soviet Union"  description="Take to Soviet Russia page">
+      <siteMapNode url="~/USSR/USSRAircraft.aspx" title="Soviet Aircraft"  description="Learn about Russian Airplanes!" />
+      <siteMapNode url="~/USSR/USSRTanks.aspx" title="Soviet Tanks" description="Learn about Russian Tanks!" />
+    </siteMapNode>
+    <siteMapNode url="~/Germany/GermanyDefault.aspx" title="Germany"  description="Take to German Page">
+      <siteMapNode url="~/Germany/GermanyAircraft.aspx" title="German Aircraft"  description="Learn about German Airplanes!" />
+      <siteMapNode url="~/Germany/GermanyTanks.aspx" title="German Tanks" description="Learn about German Tanks!" />
+    </siteMapNode>
+    <siteMapNode url="~/Japan/JapanDefault.aspx" title="Japan"  description="Take to Japan Page">
+      <siteMapNode url="~/Japan/JapanAircraft.aspx" title="Japanese Aircraft"  description="Learn about Japanese Airplanes!" />
+      <siteMapNode url="~/Japan/JapanTanks.aspx" title="Japanese Tanks" description="Learn about Japanese Tanks!" />
+    </siteMapNode>
+    <siteMapNode url="~/Vehicle/VehicleDefault.aspx" title="Vehicle List" description="Access list of all vehicles shown on this website!">
+    </siteMapNode>
+    <siteMapNode url="~/Login/LoginDefault.aspx" title="  Login" description="Login">
+      <siteMapNode url="~/Login/SignUp.aspx" title="Sign Up" description="SignUp" />
+    </siteMapNode>
+  </siteMapNode>
+</siteMap>

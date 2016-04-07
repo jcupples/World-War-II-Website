@@ -1,0 +1,79 @@
+﻿<%@ Master Language="VB" CodeFile="MasterPage.master.vb" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>The Machines of World War II</title>
+<link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+
+        <div id="mainContainer">
+	<div id="header">
+		<div class="box">
+		<asp:HyperLink ID="Home" runat="server" NavigateUrl="~/Default.aspx" CssClass="hyperlink"><h2>The Machines and History of World War II</h2></asp:HyperLink>
+            <asp:HyperLink ID="AlsoHome" runat="server" CssClass="hyperlink" NavigateUrl="~/Default.aspx"><h3>The Aircrafts and Tanks of the Great War</h3></asp:HyperLink>
+		</div>
+	</div>
+
+        <div class="navigation">
+            <asp:Menu ID="Menu1" runat="server" DataSourceID="SiteMapDataSource1" CssClass="MainMenu" Orientation="Horizontal" StaticEnableDefaultPopOutImage="False" SkipLinkText="">
+        
+              <StaticMenuItemStyle HorizontalPadding="20px" VerticalPadding="2px" borderstyle="Solid"
+                                    borderwidth="1" bordercolor="Black"/>
+              <DynamicMenuStyle BackColor="#FFFBD6" />
+              
+              <DynamicMenuItemStyle HorizontalPadding="20px" VerticalPadding="2px" borderstyle="Solid"
+                                    borderwidth="1" bordercolor="Black"/>
+              <DynamicHoverStyle BackColor="#990000" Font-Bold="True" 
+                ForeColor="White" />
+              <StaticHoverStyle BackColor="#990000" Font-Bold="True" 
+                ForeColor="White" /> 
+
+            
+
+            </asp:Menu>
+
+        </div>
+            <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="False" />
+
+	<div id="topShadow">&nbsp;	</div>
+	<div id="content">
+                <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+		<div class="box">
+    <p>To view specifications of all vehicles listed on this website click 
+            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Vehicle/VehicleDefault.aspx">here</asp:HyperLink>.</p>
+    </div>
+	</div>
+	<div id="sidebar">
+		<div class="box">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+
+		     </asp:ContentPlaceHolder>
+        </div>
+		
+		<div class="spacer">&nbsp;</div>
+		
+		<div class="box">
+		</div>
+	</div>
+	<div id="bottomShadow">&nbsp;</div>
+  	<div id="footer">
+		<div class="box">
+		    Created by Jonathan Cupples
+		</div>
+	</div>
+
+    
+        </div>
+<</div>
+    </form>
+</body>
+</html>
